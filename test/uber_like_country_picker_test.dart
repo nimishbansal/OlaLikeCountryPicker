@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:uber_like_country_picker/uber_like_country_picker.dart';
+import 'package:uber_like_country_picker/src/uber_like_country_picker.dart';
 
 void main() {
   test('adds one to input values', () {
