@@ -14,9 +14,17 @@ typedef OnSelectedCallback = Future<bool> Function(Country country);
 /// own version of listItem used in [_CountryListViewState.build]
 ///
 /// Used by [CountryListView.itemBuilder] in [_CountryListViewState._buildListItem]
-typedef ListItemBuilder = Widget Function(
-    BuildContext context, int index, Country country);
+typedef ListItemBuilder = Widget Function(BuildContext context, int index, Country country);
 
+
+enum ListItemFlagTitleCodeOrder {
+
+  ///DialCode first, then Country name, then Flag
+  dialCodeToTileToFlag,
+
+  ///Flag first, then Country name, then DialCode
+  flagToTitleToDialCode
+}
 /// A widget that is used to display list of countries with their flags, name and mobile codes.
 ///
 /// When a list item in this widget is tapped it causes the country to be selected and executes
@@ -63,7 +71,18 @@ class CountryListView extends StatefulWidget {
   final bool showFlag;
   final bool showDialCode;
 
+  /// It is a prefix that is prepended to each countryDialCode
+  /// By default it is '+'
   final String dialCodePrefix;
+
+  /// It gives application an opportunity to give style to title of the country in listItem
+  final TextStyle itemTitleStyle;
+
+  /// It gives application an opportunity to give style to dialCode of the country in listItem
+  final TextStyle dialCodeStyle;
+
+  final ListItemFlagTitleCodeOrder flagTitleCodeOrder;
+
 
   CountryListView({
     Key key,
@@ -77,6 +96,9 @@ class CountryListView extends StatefulWidget {
     this.showFlag=true,
     this.showDialCode = true,
     this.dialCodePrefix = '+',
+    this.itemTitleStyle,
+    this.dialCodeStyle,
+    this.flagTitleCodeOrder=ListItemFlagTitleCodeOrder.flagToTitleToDialCode,
   })  : countries = countryJsonList
             .map((countryData) => Country.fromJson(countryData))
             .toList(),
@@ -105,10 +127,25 @@ class _CountryListViewState extends State<CountryListView> {
       // Use itemBuilder by the application, if provided.
       return widget.itemBuilder(context, index, country);
     } else {
+      Widget leadingWidget;
+      Widget trailingWidget;
+      if (widget.flagTitleCodeOrder==ListItemFlagTitleCodeOrder.flagToTitleToDialCode)
+        {
+          leadingWidget=widget.showFlag?getFlag(country):null;
+          trailingWidget=widget.showDialCode?Text(widget.dialCodePrefix+country.dialCode, style: widget.dialCodeStyle,):null;
+        }
+      else{
+        leadingWidget=widget.showDialCode?Text(widget.dialCodePrefix+country.dialCode, style: widget.dialCodeStyle,):null;
+        trailingWidget=widget.showFlag?getFlag(country):null;
+      }
+
       return new ListTile(
-        leading: widget.showFlag?getFlag(country):null,
-        title: new Text(country.name),
-        trailing: widget.showDialCode?Text(widget.dialCodePrefix+country.dialCode):null,
+//        leading: widget.showFlag?getFlag(country):null,
+//        title: new Text(country.name, style: widget.itemTitleStyle,),
+//        trailing: widget.showDialCode?Text(widget.dialCodePrefix+country.dialCode, style: widget.dialCodeStyle,):null,
+        leading: leadingWidget,
+        title: new Text(country.name, style: widget.itemTitleStyle,),
+        trailing:trailingWidget,
       );
     }
   }
