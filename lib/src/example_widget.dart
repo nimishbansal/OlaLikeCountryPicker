@@ -14,6 +14,9 @@ class ExampleWidget extends StatefulWidget
 class ExampleWidgetState extends State<ExampleWidget>{
   @override
   Widget build(BuildContext context) {
-      return CountryListView();
+      return CountryListView(flagWidth: 50,);
+//      return CountryListView(itemBuilder: (context, index, country){
+//          return Text("ho"+ country.name);
+//      },);
   }
 }
