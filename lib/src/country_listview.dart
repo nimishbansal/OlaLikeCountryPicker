@@ -106,9 +106,9 @@ class _CountryListViewState extends State<CountryListView> {
       return widget.itemBuilder(context, index, country);
     } else {
       return new ListTile(
-        leading: widget.showFlag!=null?getFlag(country):null,
+        leading: widget.showFlag?getFlag(country):null,
         title: new Text(country.name),
-        trailing: widget.showDialCode!=null?Text(widget.dialCodePrefix+country.dialCode):null,
+        trailing: widget.showDialCode?Text(widget.dialCodePrefix+country.dialCode):null,
       );
     }
   }
