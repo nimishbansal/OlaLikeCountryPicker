@@ -8,7 +8,7 @@ import 'Repository/countries_json.dart';
 /// Used by [CountryListView.onSelected].
 ///
 /// Called when the country has been selected.
-typedef OnSelectedCallback = Future<bool> Function(Country country);
+typedef OnSelectedCallback = Function(Country country);
 
 /// Signature used by [CountryListView] to give the application an opportunity to create their
 /// own version of listItem used in [_CountryListViewState.build]
@@ -83,6 +83,11 @@ class CountryListView extends StatefulWidget {
 
   final ListItemFlagTitleCodeOrder flagTitleCodeOrder;
 
+  final bool primary;
+
+  final ScrollPhysics scrollPhysics;
+
+  final ScrollController scrollController;
   CountryListView({
     Key key,
     this.countryJsonList = country_codes,
@@ -98,6 +103,9 @@ class CountryListView extends StatefulWidget {
     this.itemTitleStyle,
     this.dialCodeStyle,
     this.flagTitleCodeOrder=ListItemFlagTitleCodeOrder.flagToTitleToDialCode,
+    this.scrollPhysics=const NeverScrollableScrollPhysics(),
+    this.primary=false,
+    this.scrollController,
   })  : countries = countryJsonList
             .map((countryData) => Country.fromJson(countryData))
             .toList(),
@@ -112,7 +120,7 @@ class CountryListView extends StatefulWidget {
 class _CountryListViewState extends State<CountryListView> {
 
   /// physics parameter given to ListView.builder in [build]
-  ScrollPhysics scrollPhysics;
+//  ScrollPhysics scrollPhysics=NeverScrollableScrollPhysics();
 
   Widget getFlag(Country country) {
     String flagPath = "${widget.flagBasePath}${country.code.toLowerCase()}.png";
@@ -146,6 +154,7 @@ class _CountryListViewState extends State<CountryListView> {
         leading: leadingWidget,
         title: new Text(country.name, style: widget.itemTitleStyle,),
         trailing:trailingWidget,
+        onTap: () => widget.onSelected(country)
       );
     }
   }
@@ -153,7 +162,9 @@ class _CountryListViewState extends State<CountryListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        physics: scrollPhysics,
+      controller: widget.scrollController,
+        primary: widget.primary,
+        physics: widget.scrollPhysics,
         itemCount: widget.countries.length,
         itemBuilder: (context, index) {
           return _buildListItem(context, index, widget.countries[index]);
