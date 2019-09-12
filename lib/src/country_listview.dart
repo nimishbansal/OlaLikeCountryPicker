@@ -154,7 +154,10 @@ class _CountryListViewState extends State<CountryListView> {
         leading: leadingWidget,
         title: new Text(country.name, style: widget.itemTitleStyle,),
         trailing:trailingWidget,
-        onTap: () => widget.onSelected(country)
+        onTap: (){
+            assert(widget.onSelected!=null);
+            widget.onSelected(country);
+        }
       );
     }
   }
