@@ -134,7 +134,7 @@ class _CountryListViewState extends State<CountryListView> {
       width: widget.flagWidth,
       height: widget.flagHeight,
       child: Image(
-        image: new AssetImage(flagPath, package: 'uber_like_country_picker'),
+        image: new AssetImage(flagPath, package: 'ola_like_country_picker'),
       ),
     );
   }
