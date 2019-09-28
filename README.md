@@ -1,14 +1,25 @@
-# ola_like_country_picker
+Ola Like Country Picker
+==========================
 
 A new Flutter package to select country from list of countries.
 
-## Getting Started
+## Introduction
+It is Flutter package made in Dart to have plug-n-play CountryPicker tool.
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+1. To simply use country list view any where use CountryListView() 
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### Example Usage:
+```dart
+return MaterialApp(
+  theme: ThemeData(primarySwatch: Colors.purple),
+  home: Scaffold(
+    appBar: AppBar(
+      title: Text('Select Country'),
+    ),
+    body: CountryListView(),
+  ),
+);
+```
+
+### Output
+<img src="https://user-images.githubusercontent.com/20876020/65821688-6b7e1280-e256-11e9-993a-a4847acb8859.gif" width="30%" height="60%"/>
