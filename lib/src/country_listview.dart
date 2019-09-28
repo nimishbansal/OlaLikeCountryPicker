@@ -112,7 +112,7 @@ class CountryListView extends StatefulWidget {
     this.itemTitleStyle,
     this.dialCodeStyle,
     this.flagTitleCodeOrder=ListItemFlagTitleCodeOrder.flagToTitleToDialCode,
-    this.scrollPhysics=const NeverScrollableScrollPhysics(),
+    this.scrollPhysics,
     this.primary=false,
     this.scrollController,
   })  : countries = countryJsonList
@@ -150,19 +150,21 @@ class _CountryListViewState extends State<CountryListView> {
       String fullDialCode;
       fullDialCode = widget.dialCodePrefix+country.dialCode;
       if (widget.flagTitleCodeOrder==ListItemFlagTitleCodeOrder.flagToTitleToDialCode) {
-          leadingWidget=widget.showFlag??getFlag(country);
-          trailingWidget=widget.showDialCode??Text(fullDialCode, style: widget.dialCodeStyle,);
+          leadingWidget=widget.showFlag?getFlag(country):null;
+          trailingWidget=widget.showDialCode?Text(fullDialCode, style: widget.dialCodeStyle,):null;
       }
       else {
-        leadingWidget=widget.showDialCode??Text(fullDialCode, style: widget.dialCodeStyle,);
-        trailingWidget=widget.showFlag??getFlag(country);
+        leadingWidget=widget.showDialCode?Text(fullDialCode, style: widget.dialCodeStyle,):null;
+        trailingWidget=widget.showFlag?getFlag(country):null;
       }
 
       return new ListTile(
         leading: leadingWidget,
         title: new Text(country.name, style: widget.itemTitleStyle,),
         trailing:trailingWidget,
-        onTap: widget.onSelected(country)
+        onTap: () {
+          widget.onSelected(country);
+        }
       );
     }
   }
