@@ -1,6 +1,6 @@
-# uber_like_country_picker
+# ola_like_country_picker
 
-A new Flutter package to select country from list of countries
+A new Flutter package to select country from list of countries.
 
 ## Getting Started
 
