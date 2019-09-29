@@ -27,7 +27,7 @@ return MaterialApp(
 ### Parameters
 | parameter       | default       | required | type                      | remark                                                                                                                                              |
 |-----------------|---------------|----------|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| countryJsonList | country_codes | no       | List<Map<String, String>> | can be used to specify own set of sublislt of countries from the variable country_codes                                                      |
+| countryJsonList | country_codes | no       | List<Map<String, String>> | can be used to specify own set of sublist of countries from the variable country_codes                                                      |
 | flagWidth       |       25      | no       | double                    | width of flag                                                                                                                                       |
 | flagHeight      |       25      | no       | double                    | height of flag                                                                                                                                      |
 | showFlag        |      true     | no       | bool                      | whether to show flag or not                                                                                                                         |
