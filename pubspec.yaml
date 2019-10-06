@@ -1,8 +1,8 @@
 name: ola_like_country_picker
 description: A new Flutter package to select country from list of countries
 version: 0.0.1
-author:
-homepage:
+author: Nimish Bansal <nimish4july1998@gmail.com>
+homepage: https://github.com/nimishbansal/OlaCountryPicker
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
