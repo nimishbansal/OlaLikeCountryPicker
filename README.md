@@ -6,7 +6,49 @@ A new Flutter package to select country from list of countries.
 ## Introduction
 It is Flutter package made in Dart to have plug-n-play CountryPicker tool.
 
-1. To simply use country list view any where use CountryListView() 
+1. To use the Country Picker without any complexity 
+
+### Example Usage:
+```dart
+class _MyHomePageState extends State<MyHomePage> {
+  CountryPicker countryPicker;
+  Country country = Country.fromJson(countryCodes[0]); // select initial country 
+
+  @override
+  void initState() {
+    super.initState();
+    countryPicker = CountryPicker(onCountrySelected: (Country country) {
+      print(country);
+      setState(() {
+        this.country = country;
+      });
+    });
+  }
+  
+    @override
+  Widget build(BuildContext context) {
+    // To simply launch the country picker
+    // use countryPicker.launch(context)
+    // to forcefully dismiss use countryPicker.dismiss()
+    // simple example could be
+    return GestureDetector(
+      child: AssetImage(country.flagUri, package: 'ola_like_country_picker'),
+      onTap(){
+          countryPicker.launch();
+      }
+    );
+  }  
+}
+```
+
+### Output
+<img src="https://user-images.githubusercontent.com/20876020/66270364-341fef00-e870-11e9-9a66-fd30a6bb3796.gif" width="30%" height="60%"/>
+
+
+2. To simply use country list view any where use CountryListView() and to modify attributes like flagWidth, flagHeight, countryTitle style etc use below arguments like
+```dart
+CountryListView(flagWidth:50, flagHeight:50 , itemTitleStyle: TextStyle(fontSize:20)); 
+```
 
 ### Example Usage:
 ```dart
@@ -36,3 +78,25 @@ return MaterialApp(
 | itemTitleStyle  |      null     | no       | TextStyle                 | Used to change style of Country title e.g TextStyle(fontSize:30)                                                                                    |
 | dialCodeStyle   |      null     | no       | TextStyle                 | Used to change style of Country's dial code e.g TextStyle(backgroundColor:Colors.green[400])                                                        |
 | onSelected      |      null     | no       | OnCountrySelectedCallback | When Any Country is selected what callback has to be executed e.g CountryListView(onSelected: (Country country){       print(country.toString() }); |
+
+
+
+3. To use the own version of CountryListView() with CountryPicker() use setCountryListView() method before calling launch()
+e.g.
+```dart
+    c = CountryPicker(onCountrySelected: (Country country) {
+      print(country);
+      setState(() {
+        this.country = country;
+      });
+    });
+    CountryListView clv = CountryListView(showFlag:false); //own version of CountryListView
+    c.setCountryListView(clv);
+    ...
+    ...
+    // Call c.launch(context) in GestureDetector() or other listeners 
+    ...
+    ...
+    
+ ```
+    
