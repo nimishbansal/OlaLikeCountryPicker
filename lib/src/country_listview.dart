@@ -14,17 +14,17 @@ typedef OnCountrySelectedCallback = Function(Country country);
 /// own version of listItem used in [_CountryListViewState.build]
 ///
 /// Used by [CountryListView.itemBuilder] in [_CountryListViewState._buildListItem]
-typedef ListItemBuilder = Widget Function(BuildContext context, int index, Country country);
-
+typedef ListItemBuilder = Widget Function(
+    BuildContext context, int index, Country country);
 
 enum ListItemFlagTitleCodeOrder {
-
   ///DialCode first, then Country name, then Flag
   dialCodeToTileToFlag,
 
   ///Flag first, then Country name, then DialCode
   flagToTitleToDialCode
 }
+
 /// A widget that is used to display list of countries with their flags, name and mobile codes.
 ///
 /// When a list item in this widget is tapped it causes the country to be selected and executes
@@ -106,14 +106,14 @@ class CountryListView extends StatefulWidget {
     this.flagBasePath = "assets/images/flags/",
     this.flagWidth = 25,
     this.flagHeight = 25,
-    this.showFlag=true,
+    this.showFlag = true,
     this.showDialCode = true,
     this.dialCodePrefix = '+',
     this.itemTitleStyle,
     this.dialCodeStyle,
-    this.flagTitleCodeOrder=ListItemFlagTitleCodeOrder.flagToTitleToDialCode,
+    this.flagTitleCodeOrder = ListItemFlagTitleCodeOrder.flagToTitleToDialCode,
     this.scrollPhysics,
-    this.primary=false,
+    this.primary = false,
     this.scrollController,
   })  : countries = countryJsonList
             .map((countryData) => Country.fromJson(countryData))
@@ -127,7 +127,6 @@ class CountryListView extends StatefulWidget {
 }
 
 class _CountryListViewState extends State<CountryListView> {
-
   Widget getFlag(Country country) {
     String flagPath = "${widget.flagBasePath}${country.code.toLowerCase()}.png";
     return Container(
@@ -143,45 +142,56 @@ class _CountryListViewState extends State<CountryListView> {
     if (widget.itemBuilder != null) {
       // Use itemBuilder by the application, if provided.
       return widget.itemBuilder(context, index, country);
-    }
-    else {
+    } else {
       Widget leadingWidget;
       Widget trailingWidget;
       String fullDialCode;
-      fullDialCode = widget.dialCodePrefix+country.dialCode;
-      if (widget.flagTitleCodeOrder==ListItemFlagTitleCodeOrder.flagToTitleToDialCode) {
-          leadingWidget=widget.showFlag?getFlag(country):null;
-          trailingWidget=widget.showDialCode?Text(fullDialCode, style: widget.dialCodeStyle,):null;
-      }
-      else {
-        leadingWidget=widget.showDialCode?Text(fullDialCode, style: widget.dialCodeStyle,):null;
-        trailingWidget=widget.showFlag?getFlag(country):null;
+      fullDialCode = widget.dialCodePrefix + country.dialCode;
+      if (widget.flagTitleCodeOrder ==
+          ListItemFlagTitleCodeOrder.flagToTitleToDialCode) {
+        leadingWidget = widget.showFlag ? getFlag(country) : null;
+        trailingWidget = widget.showDialCode
+            ? Text(
+                fullDialCode,
+                style: widget.dialCodeStyle,
+              )
+            : null;
+      } else {
+        leadingWidget = widget.showDialCode
+            ? Text(
+                fullDialCode,
+                style: widget.dialCodeStyle,
+              )
+            : null;
+        trailingWidget = widget.showFlag ? getFlag(country) : null;
       }
 
       return new ListTile(
-        leading: leadingWidget,
-        title: new Text(country.name, style: widget.itemTitleStyle,),
-        trailing:trailingWidget,
-        onTap: () {
-          widget.onSelected(country);
-        }
-      );
+          leading: leadingWidget,
+          title: new Text(
+            country.name,
+            style: widget.itemTitleStyle,
+          ),
+          trailing: trailingWidget,
+          onTap: () {
+            widget.onSelected(country);
+          });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return MediaQuery.removePadding(
-            context: context,
-            removeTop: true,
-            child: ListView.builder(
-      controller: widget.scrollController,
-        primary: widget.primary,
-        physics: widget.scrollPhysics,
-        itemCount: widget.countries.length,
-        itemBuilder: (context, index) {
-          return _buildListItem(context, index, widget.countries[index]);
-        }),
+      context: context,
+      removeTop: true,
+      child: ListView.builder(
+          controller: widget.scrollController,
+          primary: widget.primary,
+          physics: widget.scrollPhysics,
+          itemCount: widget.countries.length,
+          itemBuilder: (context, index) {
+            return _buildListItem(context, index, widget.countries[index]);
+          }),
     );
   }
 }

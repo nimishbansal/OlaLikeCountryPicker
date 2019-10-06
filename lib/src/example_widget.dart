@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'country_listview.dart';
 import 'country_picker.dart';
 
 class ExampleWidget extends StatefulWidget {
@@ -9,8 +8,6 @@ class ExampleWidget extends StatefulWidget {
     return ExampleWidgetState();
   }
 }
-
-
 
 class ExampleWidgetState extends State<ExampleWidget> {
   CountryPicker c;
@@ -23,11 +20,13 @@ class ExampleWidgetState extends State<ExampleWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(child: Container(color: Colors.yellow[500]), onTap: () {
-      c.launch(context);
-      Future.delayed(Duration(seconds: 4), () {
-        c.dismiss();
-      });
-    });
+    return GestureDetector(
+        child: Container(color: Colors.yellow[500]),
+        onTap: () {
+          c.launch(context);
+          Future.delayed(Duration(seconds: 4), () {
+            c.dismiss();
+          });
+        });
   }
 }

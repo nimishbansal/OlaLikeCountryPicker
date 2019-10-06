@@ -87,11 +87,14 @@ class CustomScrollPhysics extends ScrollPhysics {
   Simulation createBallisticSimulation(
       ScrollMetrics position, double velocity) {
     if (_describeFlingGesture(velocity) == _FlingGestureKind.fling_up) {
-      if (position.pixels == 0.0 && countryPickerWidgetState.height < countryPickerWidgetState.maxHeight) {
+      if (position.pixels == 0.0 &&
+          countryPickerWidgetState.height <
+              countryPickerWidgetState.maxHeight) {
         countryPickerWidgetState.maximizeSheetHeight();
         return null;
       }
-    } else if (_describeFlingGesture(velocity) == _FlingGestureKind.fling_down) {
+    } else if (_describeFlingGesture(velocity) ==
+        _FlingGestureKind.fling_down) {
       if (position.pixels == 0) {
         this.countryPickerWidgetState.minimizeSheetHeight();
         return null;
@@ -99,10 +102,12 @@ class CustomScrollPhysics extends ScrollPhysics {
     } else if (_describeFlingGesture(velocity) == _FlingGestureKind.none) {
       //Maximize or minimize when drag gesture is ended without fling.
       //Either it maximizes or minimizes depending on current position and dismiss threshold
-      double dismissThreshold = countryPickerWidgetState.widget.dismissThreshold;
-      if (position.pixels == 0 && !this.countryPickerWidgetState.motionUnderway) {
+      double dismissThreshold =
+          countryPickerWidgetState.widget.dismissThreshold;
+      if (position.pixels == 0 &&
+          !this.countryPickerWidgetState.motionUnderway) {
         var maxMinHeightDifference = (countryPickerWidgetState.maxHeight -
-                countryPickerWidgetState.minHeight);
+            countryPickerWidgetState.minHeight);
         var offset = (countryPickerWidgetState.height -
             countryPickerWidgetState.minHeight);
 
@@ -121,8 +126,9 @@ class CustomScrollPhysics extends ScrollPhysics {
     }
 
     var result = super.createBallisticSimulation(position, velocity);
-    if (result.runtimeType == ClampingScrollSimulation && velocity.abs() > 0
-            && velocity.abs() < _kMinFlingVelocity) {
+    if (result.runtimeType == ClampingScrollSimulation &&
+        velocity.abs() > 0 &&
+        velocity.abs() < _kMinFlingVelocity) {
       return null;
     }
     return result;
