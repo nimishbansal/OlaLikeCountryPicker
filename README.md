@@ -32,11 +32,19 @@ class _MyHomePageState extends State<MyHomePage> {
     // to forcefully dismiss use countryPicker.dismiss()
     // simple example could be
     return GestureDetector(
-      child: AssetImage(country.flagUri, package: 'ola_like_country_picker'),
-      onTap(){
-          countryPicker.launch();
-      }
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image:
+                AssetImage(country.flagUri, package: 'ola_like_country_picker'),
+          ),
+        ),
+      ),
+      onTap: () {
+        c.launch(context);
+      },
     );
+
   }  
 }
 ```

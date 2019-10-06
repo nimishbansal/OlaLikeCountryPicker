@@ -5,3 +5,8 @@
 
 ### Changed
  - Ran flutter format on lib/src directory
+
+
+ ## [0.0.3] - 2019-10-06
+ - Added example in example/
+ - modified Readme.md
