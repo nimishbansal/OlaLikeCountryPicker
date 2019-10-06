@@ -50,7 +50,7 @@ class CountryListView extends StatefulWidget {
   final Color backgroundColor;
 
   /// Called when the country has been selected
-  final OnCountrySelectedCallback onSelected;
+  OnCountrySelectedCallback onSelected;
 
   /// builder for making own version of country list item e.g
   /// ```dart
@@ -94,7 +94,7 @@ class CountryListView extends StatefulWidget {
 
   final bool primary;
 
-  final ScrollPhysics scrollPhysics;
+  ScrollPhysics scrollPhysics;
 
   final ScrollController scrollController;
   CountryListView({

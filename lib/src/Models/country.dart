@@ -23,4 +23,7 @@ class Country {
         code=countryData['ISO'];
         dialCode=countryData['Code'];
     }
+
+    String get flagUri => "assets/images/flags/${code.toLowerCase()}.png";
+
 }

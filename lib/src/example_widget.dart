@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'country_listview.dart';
+import 'country_picker.dart';
 
 class ExampleWidget extends StatefulWidget {
   @override
@@ -12,21 +13,21 @@ class ExampleWidget extends StatefulWidget {
 
 
 class ExampleWidgetState extends State<ExampleWidget> {
+  CountryPicker c;
+
+  @override
+  void initState() {
+    super.initState();
+    c = CountryPicker();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(color:Colors.yellow[500]);
-
+    return GestureDetector(child: Container(color: Colors.yellow[500]), onTap: () {
+      c.launch(context);
+      Future.delayed(Duration(seconds: 4), () {
+        c.dismiss();
+      });
+    });
   }
-//      return CountryListView(flagWidth: 50,
-//          flagHeight: 50,
-//          showFlag: true,
-//          showDialCode: true,
-//          itemTitleStyle: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
-//          dialCodeStyle: TextStyle(fontSize: 16),
-//          flagTitleCodeOrder: ListItemFlagTitleCodeOrder.dialCodeToTileToFlag,
-//      );
-//      return CountryListView(itemBuilder: (context, index, country){
-//          return Text("ho"+ country.name);
-//      },);
-//  }
 }
