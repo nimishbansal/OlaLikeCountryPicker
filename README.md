@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       onTap: () {
-        c.launch(context);
+        countryPicker.launch(context);
       },
     );
 
