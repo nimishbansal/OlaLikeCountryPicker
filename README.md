@@ -1,10 +1,10 @@
 Ola Like Country Picker
 ==========================
 
-A new Flutter package to select country from list of countries.
+A new country picker Flutter package built in Dart.
 
 ## Introduction
-It is Flutter package made in Dart to have plug-n-play CountryPicker tool.
+It is Flutter plug-n-play country picker package.
 
 1. To use the Country Picker without any complexity 
 
