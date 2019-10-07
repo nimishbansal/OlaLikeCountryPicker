@@ -17,3 +17,8 @@
  ## [0.0.5] - 2019-11-06
   - modified Readme.md
 
+ ## [0.0.5] - 2019-11-06
+  - edited description
+
+ ## [0.0.6] - 2019-11-06
+  - edited description
