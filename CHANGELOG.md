@@ -10,3 +10,6 @@
  ## [0.0.3] - 2019-10-06
  - Added example in example/
  - modified Readme.md
+
+ ## [0.0.4] - 2019-11-06
+ - modified Readme.md
