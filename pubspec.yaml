@@ -1,6 +1,6 @@
 name: ola_like_country_picker
 description: A new Flutter package for country picker. ola_like_country_picker provides a bottom sheet allowing a user to select a country(with flag and dialcode)(optional) from a list.
-version: 0.0.7
+version: 0.0.8
 author: Nimish Bansal <nimish4july1998@gmail.com>
 homepage: https://github.com/nimishbansal/OlaLikeCountryPicker
 

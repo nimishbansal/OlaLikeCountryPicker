@@ -6,7 +6,18 @@ A new country picker Flutter package built in Dart.
 ## Introduction
 It is Flutter plug-n-play country picker package.
 
-1. To use the Country Picker without any complexity look at the example below :
+0. Simple two lines of code. Initialize and Launch.
+```dart
+CountryPicker countryPicker = CountryPicker(
+                                onCountrySelected:(country){
+                                    print(country)
+                                },
+                              );
+        }
+countryPicker.launch(context)
+```
+
+1. To use the Country Picker look at the example below :
 
 ### Example Usage:
 ```dart

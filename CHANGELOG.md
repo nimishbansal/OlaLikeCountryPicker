@@ -25,3 +25,7 @@
 
  ## [0.0.7] - 2019-11-06
   - modified Readme.md
+
+ ## [0.0.8] - 2019-17-06
+  - exported country picker file as well
+  - modified README.md
