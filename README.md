@@ -13,7 +13,6 @@ CountryPicker countryPicker = CountryPicker(
                                     print(country)
                                 },
                               );
-        }
 countryPicker.launch(context)
 ```
 
