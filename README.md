@@ -16,6 +16,11 @@ CountryPicker countryPicker = CountryPicker(
 countryPicker.launch(context)
 ```
 
+## Installation
+https://pub.dev/packages/ola_like_country_picker#-installing-tab-
+
+
+
 1. To use the Country Picker look at the example below :
 
 ### Example Usage:
