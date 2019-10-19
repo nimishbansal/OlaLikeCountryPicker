@@ -162,7 +162,7 @@ class _CountryPickerWidgetState extends State<_CountryPickerWidget> {
   _CountryPickerWidgetState(CountryListView countryListView, context) {
     maxHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
-    minHeight = 220;
+    minHeight = 240;
     height = minHeight;
 
     if (countryListView == null) {
@@ -255,7 +255,26 @@ class _CountryPickerWidgetState extends State<_CountryPickerWidget> {
                 color: Colors.white,
                 duration: duration,
                 curve: curve,
-                child: this.countryListView,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    widget.countryPickerUtil.showTitle
+                        ? Padding(
+                            child: Text(
+                              widget.countryPickerUtil.titleText,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            padding: EdgeInsets.only(top: 12, left: 12),
+                          )
+                        : SizedBox(
+                            height: 0,
+                            width: 0,
+                          ),
+                    Expanded(child: this.countryListView)
+                  ],
+                ),
                 height: height,
               ),
             )),
@@ -268,14 +287,30 @@ class CountryPicker {
   /// Overlay Entry to display [_CountryPickerWidget] over the app.
   OverlayEntry overlayEntry;
 
-  /// Actual [CountryListView] view to be used in [_CountryPickerWidget]
+  /// Actual [CountryListView] view to be used in [_CountryPickerWidget].
   CountryListView countryListView;
 
+  /// Called when country has been selected.
   OnCountrySelectedCallback _onCountrySelected;
 
-  CountryPicker({OnCountrySelectedCallback onCountrySelected}) {
+  /// Title above [CountryListView] in [CountryPicker] widget.
+  ///
+  ///  By default titleText is "Select your Country"
+  String titleText = 'Select Your Country';
+
+  /// Determines whether the [titleText] will be visible above the
+  /// [CountryListView] widget.
+  bool showTitle = true;
+
+  CountryPicker({
+    OnCountrySelectedCallback onCountrySelected,
+    String titleText,
+    bool showTitle,
+  }) {
     this.countryListView = CountryListView();
     this._onCountrySelected = onCountrySelected;
+    this.titleText = titleText ?? this.titleText;
+    this.showTitle = showTitle ?? this.showTitle;
   }
 
   void setCountryListView(CountryListView countryListView) {

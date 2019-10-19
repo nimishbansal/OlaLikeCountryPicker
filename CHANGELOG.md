@@ -29,3 +29,7 @@
  ## [0.0.8] - 2019-17-06
   - exported country picker file as well
   - modified README.md
+
+ ## [0.1.0] - 2019-19-06
+  - added title property on country picker
+  - modified README.md

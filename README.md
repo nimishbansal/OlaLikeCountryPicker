@@ -10,7 +10,7 @@ It is Flutter plug-n-play country picker package.
 ```dart
 CountryPicker countryPicker = CountryPicker(
                                 onCountrySelected:(country){
-                                    print(country)
+                                    print(country);
                                 },
                               );
 countryPicker.launch(context)
@@ -65,7 +65,18 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 ### Output
-<img src="https://user-images.githubusercontent.com/20876020/66270364-341fef00-e870-11e9-9a66-fd30a6bb3796.gif" width="30%" height="60%"/>
+
+<img src="https://user-images.githubusercontent.com/20876020/67149539-030cd900-f2ca-11e9-981a-f158e63bacd1.gif" width="30%" height="60%"/>
+          
+
+### Parameters
+| parameter         | default               | required  | type                      | remark                                                                                                                                              |
+|-------------------|-----------------------|-----------|---------------------------|----------------------------------
+| onCountrySelected |        null           |    yes    | OnCountrySelectedCallback | called when country is selected.                                                      |
+| showTitle         |       true            |    no     | bool                      | whether to show title or not.                                                                                                                                       |
+| titleText         | "Select your country" |    no     | String                    | text for title.                                                                                                                        |
+
+
 
 
 2. To simply use country list view any where use CountryListView() and to modify attributes like flagWidth, flagHeight, countryTitle style etc use below arguments like
