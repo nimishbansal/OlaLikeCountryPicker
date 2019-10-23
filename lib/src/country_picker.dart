@@ -135,6 +135,19 @@ class CustomScrollPhysics extends ScrollPhysics {
   }
 }
 
+/// Modifies the Scroll Behaviour of [CountryListView].
+///
+/// Removes Glowing effect on Overscroll.
+/// See Also:
+/// * https://stackoverflow.com/a/51119796/7698247
+class _CustomScrollBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
+}
+
 class _CountryPickerWidgetState extends State<_CountryPickerWidget> {
   /// Maximum Height of the Container in which the list view is wrapped
   double maxHeight;
@@ -272,7 +285,11 @@ class _CountryPickerWidgetState extends State<_CountryPickerWidget> {
                             height: 0,
                             width: 0,
                           ),
-                    Expanded(child: this.countryListView)
+                    Expanded(
+                      child: ScrollConfiguration(
+                          behavior: _CustomScrollBehavior(),
+                          child: this.countryListView),
+                    ),
                   ],
                 ),
                 height: height,

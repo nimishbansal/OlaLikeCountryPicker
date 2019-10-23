@@ -33,3 +33,6 @@
  ## [0.1.0] - 2019-19-06
   - added title property on country picker
   - modified README.md
+
+ ## [0.1.1] - 2019-23-06
+  - removed glowing effect on OverScrolling.
