@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ola_like_country_picker/ola_like_country_picker.dart';
-import 'package:ola_like_country_picker/src/country_picker.dart';
 
 void main() => runApp(MyApp());
 

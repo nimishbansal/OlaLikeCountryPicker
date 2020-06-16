@@ -36,3 +36,7 @@
 
  ## [0.1.1] - 2019-23-06
   - removed glowing effect on OverScrolling.
+
+ ## [0.1.2] - 2020-16-06  
+  - removed unnecessary import that caused, Package not compatible with SDK dart
+  - updated README.md

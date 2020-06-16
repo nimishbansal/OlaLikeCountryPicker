@@ -134,3 +134,14 @@ e.g.
     
  ```
     
+## Support
+
+The simplest way to show your support is by giving the project a star.
+
+You can also support by becoming a patron on Patreon:
+
+[![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/nimishbansal)
+
+Or by making a single donation by buying a coffee:
+
+[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/default-orange.png)](https://www.buymeacoffee.com/nimishbansal)
