@@ -94,6 +94,8 @@ class CountryListView extends StatefulWidget {
 
   final bool primary;
 
+  final bool shrinkWrap;
+
   ScrollPhysics scrollPhysics;
 
   final ScrollController scrollController;
@@ -115,6 +117,7 @@ class CountryListView extends StatefulWidget {
     this.scrollPhysics,
     this.primary = false,
     this.scrollController,
+    this.shrinkWrap = false
   })  : countries = countryJsonList
             .map((countryData) => Country.fromJson(countryData))
             .toList(),
@@ -185,6 +188,7 @@ class _CountryListViewState extends State<CountryListView> {
       context: context,
       removeTop: true,
       child: ListView.builder(
+          shrinkWrap: widget.shrinkWrap,
           controller: widget.scrollController,
           primary: widget.primary,
           physics: widget.scrollPhysics,
